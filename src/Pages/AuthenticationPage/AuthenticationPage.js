@@ -157,7 +157,7 @@ else{
             </Grid>
             <Grid container spacing={2}>
 
-            <Grid item xs={12} sm={6} lg={6}>
+            <Grid item xs={12} sm={12} lg={12}>
             <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             <LockOpenIcon style={{margin: '0px 8px'}}/>
                 {
@@ -169,7 +169,7 @@ else{
             </Button>
             </Grid>
 
-            <Grid item xs={12} sm={6} lg={6}>
+            {/* <Grid item xs={12} sm={6} lg={6}>
                 <GoogleLogin
                 clientId="225525843782-dh5m8ics7gaoqt871srdiha2q2514p6t.apps.googleusercontent.com"
                 render={(renderProps) => (
@@ -185,7 +185,7 @@ else{
                 onFailure={googleFailure}
                 cookiePolicy='single_host_origin'
                 />
-            </Grid>
+            </Grid> */}
             </Grid>
 
             <Grid container justifyContent="flex-end">

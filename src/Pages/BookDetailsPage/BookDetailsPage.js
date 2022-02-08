@@ -9,17 +9,17 @@ import { useParams, useHistory } from "react-router-dom";
 
 import useStyles from "./styles";
 import CurrencyFormatter from "../../components/CurrencyFormatter/CurrencyFormatter";
-import { Rating } from "@material-ui/lab";
+// import { Rating } from "@material-ui/lab";
 import Comments from "../../components/Comments/Comments";
-import { addReview } from "../../redux/slices/books";
+// import { addReview } from "../../redux/slices/books";
 import Breadcums from "../../components/Breadcrums/breadcrums";
 
 const BookDetailsPage = () => {
   const books = useSelector((state) => state.books.value);
   const [book, setBook] = useState(null);
   const user = JSON.parse(localStorage.getItem("profile"));
-  const [rating, setRating] = useState(0);
-  const [ratingStatus, setRatingStatus] = useState(false);
+  // const [rating, setRating] = useState(0);
+  // const [ratingStatus, setRatingStatus] = useState(false);
   const [recommendedBooks, setRecommendedBooks] = useState([])
   const dispatch = useDispatch();
   const history = useHistory();
@@ -49,19 +49,19 @@ const BookDetailsPage = () => {
     }
   };
 
-  const handleRating = async(e) => {
-    const id = book._id;
-    const data = {
-      userId: user.data.googleId ? user.data.googleId : user.data._id,
-      rating: Number(e.target.outerText.split(" ")[0])
-    }
-    const res = await booksServices.addReview(data, id);
-    if(res.status === 200){
-      setRatingStatus(true)
-      getBookData()
-      dispatch(addReview({id: book._id, data: res.data.review}));
-    }
-  };
+  // const handleRating = async(e) => {
+  //   const id = book._id;
+  //   const data = {
+  //     userId: user.data.googleId ? user.data.googleId : user.data._id,
+  //     rating: Number(e.target.outerText.split(" ")[0])
+  //   }
+  //   const res = await booksServices.addReview(data, id);
+  //   if(res.status === 200){
+  //     setRatingStatus(true)
+  //     getBookData()
+  //     dispatch(addReview({id: book._id, data: res.data.review}));
+  //   }
+  // };
 
   const pathNames = [
     {
@@ -101,7 +101,7 @@ const BookDetailsPage = () => {
                 }
               />
             </div>
-            {book.reviews.find(
+            {/* {book.reviews.find(
           (item) =>
             item.user === (user.data.googleId ? user.data.googleId : user.data._id)
         ) ? (
@@ -137,7 +137,7 @@ const BookDetailsPage = () => {
             book.totalReviews ? book.totalReviews : 0
           } Reviews`}
         </Typography>
-        </div>
+        </div> */}
 
             <Typography
               gutterBottom
