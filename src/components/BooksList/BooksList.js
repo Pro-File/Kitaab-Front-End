@@ -6,7 +6,6 @@ import BookItem from './BookItem/BookItem';
 import useStyles from './styles';
 export const BooksList = () => {
     const books = useSelector((state) => state.books.value);
-    console.log(books);
     const classes = useStyles();
     return (
         <div>

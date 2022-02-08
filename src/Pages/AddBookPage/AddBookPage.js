@@ -8,7 +8,6 @@ const AddBookPage = () => {
 
   useEffect(() => {
     const user  = JSON.parse(localStorage.getItem('profile'));
-    console.log(user);
     setCurrentId(user.data.email);
   }, []);
 

@@ -8,7 +8,6 @@ const authSlice = createSlice({
     initialState : initialValue,
     reducers: {
         googleLogin: (state, action) => {
-            console.log(action.payload);
             localStorage.setItem('profile', JSON.stringify({...action?.payload}));
             return action.payload;
         },

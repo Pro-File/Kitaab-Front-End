@@ -15,19 +15,16 @@ const NavBar = () => {
     const location = useLocation();
     const dispatch = useDispatch();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    // console.log("Render Nav", user);
     
     useEffect(() => {
       const token = user?.token;
       if(token){
         const decodedToken = decode(token);
-        console.log("Token:",decodedToken.exp * 1000 < new Date().getTime());
         if(decodedToken.exp * 1000 < new Date().getTime()){
           handleLogOut()
         }
       }
       setUser(JSON.parse(localStorage.getItem('profile')));
-      //JWT Logic
     }, [location]);
     
   const handleLogOut = () => {

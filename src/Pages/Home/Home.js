@@ -14,7 +14,6 @@ const Home = () => {
 
   const getData = async() => {
     const res = await booksServices.getBooks();
-    console.log("Response form Get Books",res);
     if(res.status === 200){
       dispatch(getAllBooks(res.data))
     }

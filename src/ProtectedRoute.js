@@ -12,7 +12,6 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
         isLoggedIn ? (
             <>
             <Component {...props} />
-            {console.log(props.location)}
             </>
         ) : (
           <Redirect to={{ pathname: '/', state: { from: props.location } }} />

@@ -43,17 +43,14 @@ const Comments = ({ book }) => {
   const [editComment, setEditComment] = useState("");
   const [deleteAble, setDeleteAble] = useState(false);
   const [open, setOpen] = React.useState(false);
-  //   console.log("Comments on: ", book);
 
   useEffect(() => {
     getComments();
   }, [book]);
 
-  // console.log(Date.now().toISOString());
   const getComments = async () => {
     if (book) {
       const res = await commentsServices.getComments();
-      console.log("Response from Get: ", res);
       if (res.status === 200) {
         dispatch(setAllComments(res.data));
         const filteredComments = res.data.filter(
@@ -88,9 +85,7 @@ const Comments = ({ book }) => {
       bookId: book._id,
       createdAt: moment().format(),
     };
-    console.log("Comment:", commentsData);
     const res = await commentsServices.createComment(commentsData);
-    console.log("Comments Response: ", res);
     if (res.status === 200) {
       dispatch(addNewComment(res.data.data));
       setComments([...comments, res.data.data]);
@@ -99,9 +94,7 @@ const Comments = ({ book }) => {
   };
 
   const submitEditComment = async () => {
-    console.log("Edit To be: ", editComment);
     const res = await commentsServices.editComment(editComment);
-    console.log("Edit Comment Response: ", res);
     if (res.status === 200) {
       handleClose();
       const updatedComments = comments.map((comment) => {

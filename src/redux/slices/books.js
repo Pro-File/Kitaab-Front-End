@@ -21,7 +21,6 @@ const booksSlice = createSlice({
             }
         },
         addReview: (state, actions) => {
-            console.log(actions.payload.id);
             var res = state.value.map((item)=> {
                 if(item._id === actions.payload.id){
                     return  {...item, reviews: [...item.reviews, actions.payload.data]}

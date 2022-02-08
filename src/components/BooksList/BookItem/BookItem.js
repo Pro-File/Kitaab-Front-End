@@ -28,7 +28,6 @@ const BookItem = ({ book }) => {
   const history = useHistory();
 
   const handleRating = async(e) => {
-    console.log(Number(e.target.outerText.split(" ")[0]));
     const id = book._id;
     const data = {
       userId: user.data.googleId ? user.data.googleId : user.data._id,

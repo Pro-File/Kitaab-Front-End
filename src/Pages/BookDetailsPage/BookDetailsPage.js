@@ -31,30 +31,25 @@ const BookDetailsPage = () => {
   }, [id]);
 
   const openBook = (id) => {
-    console.log("Clicked Book: ");
     history.push(`/books/${id}`)
   }
   
   const getBookData = async () => {
     if (books) {
       const res = await booksServices.getBook(id);
-      console.log("Specifc Book: ", res);
       if(res.status === 200){
         setBook(res.data);
-        console.log(books);
         const filteredBooks = books.filter((item) => {
             if (item._id !== res.data._id){
               return item.category[0].label === res.data.category[0].label
             }
         })
         setRecommendedBooks([...filteredBooks])
-        console.log("Filtered Books: ", filteredBooks);
       }
     }
   };
 
   const handleRating = async(e) => {
-    console.log(Number(e.target.outerText.split(" ")[0]));
     const id = book._id;
     const data = {
       userId: user.data.googleId ? user.data.googleId : user.data._id,

@@ -14,7 +14,6 @@ class booksServices {
   }
 
   addReview(data, id) {
-    console.log(data, id);
     return http.post(`/books/${id}/review`, data)
   }
 

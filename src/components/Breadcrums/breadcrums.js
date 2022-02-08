@@ -5,7 +5,6 @@ import useStyles from './styles';
 
 export default function Breadcums({pathNames}) {
   const classes = useStyles()
-  console.log(pathNames);
     return (
       <div className={classes.breadContainer}>
       <Route>

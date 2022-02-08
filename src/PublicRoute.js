@@ -12,7 +12,6 @@ const PublicRoute = ({ component: Component, ...rest }) => {
         isLoggedIn ? (
             <>
             <Redirect to={{ pathname: '/home', state: { from: props.location } }} />
-            {console.log(props.location)}
             </>
         ) : (
             <Component {...props} />

@@ -68,9 +68,7 @@ const RequestBookForm = ({ currentId, setCurrentId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Final Booking Data: ", postData);
     const res = await bookingServices.createBooking(postData);
-    console.log("response from Create booking", res);
     if (res.status === 200) {
       setFormError({
         message: res.data.message,

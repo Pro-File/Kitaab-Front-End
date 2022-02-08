@@ -42,8 +42,6 @@ const AuthenticationPage = () => {
 
     const handleAuthSubmit = async(e) => {
         e.preventDefault();
-        console.log(formData);
-        console.log("submit");
         if(isSignUp){
     const res = await authServices.SignUp(formData);
     if(res.status === 200){
@@ -67,9 +65,7 @@ else{
     delete formData.firstName
     delete formData.lastName
     delete formData.confirmPassword
-    console.log("Form Data (Sign In) :", formData);
     const res = await authServices.SignIn(formData);
-    console.log(res);
     if(res.status === 200){
         dispatch(signin(res.data))
         onLoginSuccess()
@@ -98,7 +94,6 @@ else{
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
     const googleSuccess = async(res) => {
-        console.log("Googles : ", res);
         const userData = {
             data : res?.profileObj,
             token : res?.tokenId,
@@ -125,7 +120,6 @@ else{
     }
 
   return <Container component="main" maxWidth="sm">
-      {console.log(formError)}
       <Snackbar open={formError.open} autoHideDuration={3000} onClose={() => setFormError({ ...formError, open: false })}  anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
         <ErrorAlert onClose={() => setFormError({ ...formError, open: false })} severity={formError.status}>
           {formError.message}
