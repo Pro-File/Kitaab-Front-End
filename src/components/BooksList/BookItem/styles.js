@@ -17,7 +17,7 @@ export default makeStyles({
     cursor: 'pointer',
   },
   ratingSection: {
-    marginTop: '45px',
+    marginTop: '30px',
   },
   ratingContainer:{
     width: '100%',
@@ -37,7 +37,7 @@ export default makeStyles({
   },
   overlay2: {
     position: 'absolute',
-    top: '85px',
+    top: '80px',
     right: '10px',
     color: 'white',
   },

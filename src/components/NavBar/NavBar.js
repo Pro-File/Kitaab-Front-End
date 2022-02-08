@@ -45,7 +45,7 @@ const NavBar = () => {
               <div className={classes.brandContainer}>
                  <Avatar className={classes.purple} alt={user.data.name} src={user.data.imageUrl}>{user.data.name.charAt(0)}</Avatar>
               </div>
-                <Typography className={classes.userName} variant="subtitle1">{user.data.name}</Typography>
+                <Typography className={classes.userName} variant="subtitle1">{user.data.name.split(" ")[0]}</Typography>
                 <IconButton className={classes.logout} color="primary" onClick={handleLogOut}><PowerSettingsNewIcon/></IconButton>
                 {/* <Button variant="contained" className={classes.logout} color="secondary" onClick={handleLogOut}>Logout</Button> */}
             </div>
