@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { TextField, Button, Typography, Paper, Grid, Snackbar } from "@material-ui/core";
+import React, { useState } from "react";
+import {
+  TextField,
+  Button,
+  Typography,
+  Paper,
+  Grid,
+  Snackbar,
+} from "@material-ui/core";
 import Select from "react-select";
-// import { useDispatch, useSelector } from 'react-redux';
 import FileBase from "react-file-base64";
-
 import useStyles from "./styles";
-import { useDispatch } from "react-redux";
-import booksServices from "../../services/books/booksServices";
-import { addNewBook } from "../../redux/slices/books";
 import bookingServices from "../../services/bookings/bookingServices";
-import MuiAlert from '@material-ui/lab/Alert';
-
+import MuiAlert from "@material-ui/lab/Alert";
 
 function ErrorAlert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
-
 
 const RequestBookForm = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
@@ -29,13 +29,12 @@ const RequestBookForm = ({ currentId, setCurrentId }) => {
     description: "",
     isbns: "",
   });
-  var [formError, setFormError]= useState({
-    message: '',
+  var [formError, setFormError] = useState({
+    message: "",
     open: false,
-    status: 'success',
-  })
+    status: "success",
+  });
   //   const post = useSelector((state) => (currentId ? state.posts.find((description) => description._id === currentId) : null));
-  const dispatch = useDispatch();
   const classes = useStyles();
 
   //   useEffect(() => {
@@ -73,16 +72,24 @@ const RequestBookForm = ({ currentId, setCurrentId }) => {
       setFormError({
         message: res.data.message,
         open: true,
-        status: 'success',
-      })
+        status: "success",
+      });
       clear();
     }
   };
 
   return (
     <Paper className={classes.paper} elevation={4}>
-       <Snackbar open={formError.open} autoHideDuration={3000} onClose={() => setFormError({ ...formError, open: false })}  anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
-        <ErrorAlert onClose={() => setFormError({ ...formError, open: false })} severity={formError.status}>
+      <Snackbar
+        open={formError.open}
+        autoHideDuration={3000}
+        onClose={() => setFormError({ ...formError, open: false })}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <ErrorAlert
+          onClose={() => setFormError({ ...formError, open: false })}
+          severity={formError.status}
+        >
           {formError.message}
         </ErrorAlert>
       </Snackbar>
@@ -218,43 +225,42 @@ const RequestBookForm = ({ currentId, setCurrentId }) => {
           </Grid>
         </Grid>
         <Grid container spacing={2}>
-            <Grid item xs={12} md={6} lg={6}>
-        <Button
-          className={classes.buttonSubmit}
-          variant="contained"
-          color="primary"
-          size="large"
-          type="submit"
-          fullWidth
-        >
-          Submit
-        </Button>
-            </Grid>
-            <Grid item xs={12} md={6} lg={6}>
-        <Button
-          className={classes.buttonSubmit}
-          variant="contained"
-          color="secondary"
-          size="large"
-          onClick={clear}
-          fullWidth
-        >
-          Clear
-        </Button>
-
-            </Grid>
+          <Grid item xs={12} md={6} lg={6}>
+            <Button
+              className={classes.buttonSubmit}
+              variant="contained"
+              color="primary"
+              size="large"
+              type="submit"
+              fullWidth
+            >
+              Submit
+            </Button>
+          </Grid>
+          <Grid item xs={12} md={6} lg={6}>
+            <Button
+              className={classes.buttonSubmit}
+              variant="contained"
+              color="secondary"
+              size="large"
+              onClick={clear}
+              fullWidth
+            >
+              Clear
+            </Button>
+          </Grid>
         </Grid>
       </form>
-              <div className={classes.notice}>
-              <Typography variant="h6" color="secondary">
-        Note:
-      </Typography>
-      <Typography variant="body2" color="textSecondary">
-        If your desired book is not available with us, you can place a request
-        for it by filling out the above form. Our team will respond you in
-        the next 48 to 72 hours.
-      </Typography>
-              </div>
+      <div className={classes.notice}>
+        <Typography variant="h6" color="secondary">
+          Note:
+        </Typography>
+        <Typography variant="body2" color="textSecondary">
+          If your desired book is not available with us, you can place a request
+          for it by filling out the above form. Our team will respond you in the
+          next 48 to 72 hours.
+        </Typography>
+      </div>
     </Paper>
   );
 };

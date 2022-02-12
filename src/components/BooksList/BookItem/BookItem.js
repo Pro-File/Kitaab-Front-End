@@ -120,7 +120,7 @@ const BookItem = ({ book }) => {
           } Reviews`}
         </Typography>
       </div>
-      <CardContent className={classes.content}>
+      <div className={classes.content}>
         <Typography variant="body2" color="textSecondary">
           Categories: {book.category.map((item) => `${item.label}, `)} etc.
         </Typography>
@@ -132,7 +132,7 @@ const BookItem = ({ book }) => {
             view more <ArrowRightAltIcon className={classes.detailsBtnIcon} />
           </Button>
         </div>
-      </CardContent>
+      </div>
     </Card>
   );
 };

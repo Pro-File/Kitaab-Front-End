@@ -109,7 +109,7 @@ const Comments = ({ book }) => {
   };
 
   const submitDeleteComment = async (_id) => {
-    setDeleteAble(true)
+    setDeleteAble(true);
     const res = await commentsServices.delete(_id);
     if (res.status === 200) {
       const filteredComments = comments.filter(

@@ -21,7 +21,7 @@ const Spinner = ({ height, width, color, type }) => {
           // timeout={3000} 
           type={type || "TailSpin"}
         //   color={LoaderColor}
-          color={color || '#1094e0'}
+          color={color || '#188882'}
           height={height || 100}
           width={width || 100}
         />

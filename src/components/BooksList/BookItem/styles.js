@@ -53,7 +53,7 @@ export default makeStyles({
     padding: '0px 20px'
   },
   detailsBtn: {
-    marginTop: '20px',
+    margin: '10px 0px',
     width: '100%',
   },
   detailsBtnIcon: {

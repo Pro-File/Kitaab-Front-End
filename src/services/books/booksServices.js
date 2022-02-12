@@ -1,8 +1,8 @@
 import http from "../baseURL";
 
 class booksServices {
-  getBooks() {
-    return http.get("/books");
+  getBooks(page) {
+    return http.get(`/books/?page=${page}`);
   }
 
   getBook(id) {
@@ -14,15 +14,7 @@ class booksServices {
   }
 
   addReview(data, id) {
-    return http.post(`/books/${id}/review`, data)
-  }
-
-  update(id, data) {
-    return http.put(`/books/${id}`, data);
-  }
-
-  delete(id) {
-    return http.delete(`/books/${id}`);
+    return http.post(`/books/${id}/review`, data);
   }
 }
 

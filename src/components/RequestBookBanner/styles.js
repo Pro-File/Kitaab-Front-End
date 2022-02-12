@@ -10,7 +10,7 @@ export default makeStyles((theme) => ({
     margin: "40px 0px",
   },
   childContainer: {
-    background: "#179992",
+    background: "#179992dd",
     width: "100%",
     height: "100%",
     display: "flex",

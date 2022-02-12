@@ -20,7 +20,7 @@ export default makeStyles((theme) => ({
   },
   purple: {
     color: 'white',
-    backgroundColor: '#2196f3',
+    backgroundColor: '#179992',
   },
   iconButton: {
     margin: '0px 10px'

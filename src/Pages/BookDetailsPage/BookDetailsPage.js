@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Paper, Typography, Divider, ListItemText, Grid } from "@material-ui/core";
+import {
+  Paper,
+  Typography,
+  Divider,
+  ListItemText,
+  Grid,
+} from "@material-ui/core";
 import Loader from "../../components/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import booksServices from "../../services/books/booksServices";
@@ -17,11 +23,11 @@ import Breadcums from "../../components/Breadcrums/breadcrums";
 const BookDetailsPage = () => {
   const books = useSelector((state) => state.books.value);
   const [book, setBook] = useState(null);
-  const user = JSON.parse(localStorage.getItem("profile"));
+  // const user = JSON.parse(localStorage.getItem("profile"));
   // const [rating, setRating] = useState(0);
   // const [ratingStatus, setRatingStatus] = useState(false);
-  const [recommendedBooks, setRecommendedBooks] = useState([])
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const [recommendedBooks, setRecommendedBooks] = useState([]);
   const history = useHistory();
   const classes = useStyles();
   const { id } = useParams();
@@ -31,20 +37,20 @@ const BookDetailsPage = () => {
   }, [id]);
 
   const openBook = (id) => {
-    history.push(`/books/${id}`)
-  }
-  
+    history.push(`/books/${id}`);
+  };
+
   const getBookData = async () => {
     if (books) {
       const res = await booksServices.getBook(id);
-      if(res.status === 200){
+      if (res.status === 200) {
         setBook(res.data);
         const filteredBooks = books.filter((item) => {
-            if (item._id !== res.data._id){
-              return item.category[0].label === res.data.category[0].label
-            }
-        })
-        setRecommendedBooks([...filteredBooks])
+          if (item._id !== res.data._id) {
+            return item.category[0].label === res.data.category[0].label;
+          }
+        });
+        setRecommendedBooks([...filteredBooks]);
       }
     }
   };
@@ -65,19 +71,18 @@ const BookDetailsPage = () => {
 
   const pathNames = [
     {
-      name: 'Books',
-      to: '/home',
+      name: "Books",
+      to: "/home",
     },
     {
-      name: 'Book',
-      to: '/home'
-    }
-  ]
-
+      name: "Book",
+      to: "/home",
+    },
+  ];
 
   return (
     <>
-    <Breadcums pathNames={pathNames}/>
+      <Breadcums pathNames={pathNames} />
       {book ? (
         <div className={classes.card}>
           <div className={classes.section}>
@@ -175,10 +180,12 @@ const BookDetailsPage = () => {
             <Typography variant="subtitle1">
               Added: <b>{moment(book.createdAt).fromNow()}</b>
             </Typography>
-            <Typography variant="subtitle1">Pages: <b>{book.pages}</b></Typography>
+            <Typography variant="subtitle1">
+              Pages: <b>{book.pages}</b>
+            </Typography>
 
             <Divider style={{ margin: "20px 0" }} />
-           <Comments book={book}/>
+            <Comments book={book} />
             <Divider style={{ margin: "20px 0" }} />
           </div>
           <div className={classes.imageSection}>
@@ -197,37 +204,46 @@ const BookDetailsPage = () => {
           <Loader />
         </Paper>
       )}
-    {
-      recommendedBooks.length>0 && (
+      {recommendedBooks.length > 0 && (
         <div className={classes.section}>
-          <Typography gutterBottom variant="h5">You Might Also Like</Typography>
-          <Divider/>
-          <Grid className={classes.container} container alignItems="stretch" spacing={4}>
-          {
-            recommendedBooks.map((book) => {
-                return   <Grid key={book._id} item xs={12} sm={6} md={4} lg={3}>
-                <div style={{margin: '20px', cursor: 'pointer'}} onClick={() => openBook(book._id)} key={book._id}>
+          <Typography gutterBottom variant="h5">
+            You Might Also Like
+          </Typography>
+          <Divider />
+          <Grid
+            className={classes.container}
+            container
+            alignItems="stretch"
+            spacing={4}
+          >
+            {recommendedBooks.map((book) => {
+              return (
+                <Grid key={book._id} item xs={12} sm={6} md={4} lg={3}>
+                  <div
+                    style={{ margin: "20px", cursor: "pointer" }}
+                    onClick={() => openBook(book._id)}
+                    key={book._id}
+                  >
                     <Typography gutterBottom variant="h6">
-                    {book.title}
+                      {book.title}
                     </Typography>
                     <Typography gutterBottom variant="subtitle2">
-                    {book.author}
+                      {book.author}
                     </Typography>
                     <Typography gutterBottom variant="subtitle2">
-                    {book.publisher}
+                      {book.publisher}
                     </Typography>
                     <Typography gutterBottom variant="subtitle2">
-                    {book.desciption}
+                      {book.desciption}
                     </Typography>
-                    <img alt={book._id} src={book.bookImage} width="200px"/>
-                </div>
+                    <img alt={book._id} src={book.bookImage} width="200px" />
+                  </div>
                 </Grid>
-            })
-          }
+              );
+            })}
           </Grid>
         </div>
-      )
-    }
+      )}
     </>
   );
 };

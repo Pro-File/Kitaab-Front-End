@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "./components/NavBar/NavBar";
 import AddBookPage from "./Pages/AddBookPage/AddBookPage";
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import Home from "./Pages/Home/Home";
 import { Container } from "@material-ui/core";
 import AuthenticationPage from "./Pages/AuthenticationPage/AuthenticationPage";
@@ -18,6 +18,7 @@ function App() {
       <Switch>
           <PublicRoute path="/" exact component={AuthenticationPage}/>   
           <ProtectedRoute path="/home" exact component={Home}/>
+          <ProtectedRoute path="/books" exact component={Home}/>
           <ProtectedRoute path="/requestBook" exact component={RequestBookPage}/>     
           <ProtectedRoute path="/addBook" exact component={AddBookPage}/>
           <ProtectedRoute path="/books/:id" exact component={BookDetailsPage}/>

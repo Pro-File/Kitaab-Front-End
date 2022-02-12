@@ -2,8 +2,6 @@ import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
 const PublicRoute = ({ component: Component, ...rest }) => {
-
-  // Add your own authentication on the below line.
   const isLoggedIn = localStorage.getItem('profile')
   return (
       <Route

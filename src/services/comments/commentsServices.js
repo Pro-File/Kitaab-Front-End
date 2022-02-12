@@ -5,20 +5,12 @@ class commentsServices {
     return http.get("/comments");
   }
 
-  getComment(id) {
-    return http.get(`/comments/${id}`);
-  }
-
   createComment(data) {
     return http.post("/comments", data);
   }
 
-  editComment(data){
-    return http.put(`/comments/${data._id}`, data)
-  }
-
-  update(id, data) {
-    return http.put(`/comments/${id}`, data);
+  editComment(data) {
+    return http.put(`/comments/${data._id}`, data);
   }
 
   delete(_id) {
